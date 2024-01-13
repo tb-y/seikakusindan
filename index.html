@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/milligram@1.4.1/dist/milligram.min.css">
+  <title>性格診断プログラム</title>
+</head>
+<body>
+  <div class="container">
+    <h1>性格診断プログラム</h1>
+    <hr>
+
+    <form id="personalityForm">
+      <label for="answer1">1. 怒られた時にどんな感情になりますか (泣きたくなる、怒りが湧いてくる)</label>
+      <input type="text" id="answer1" required>
+
+      <label for="answer2">2. 人から勧められた趣味を試してみるタイプですか(Yes、No)</label>
+      <input type="text" id="answer2" required>
+
+      <label for="answer3">3. 道を尋ねられたら教えてあげますか （Yes、No）</label>
+      <input type="text" id="answer3" required>
+
+      <button type="button" onclick="submitAnswers()">診断する</button>
+    </form>
+
+    <div id="result" style="margin-top: 20px; font-weight: bold;"></div>
+  </div>
+
+  <script>
+    function submitAnswers() {
+      const answer1 = document.getElementById("answer1").value;
+      const answer2 = document.getElementById("answer2").value;
+      const answer3 = document.getElementById("answer3").value;
+
+      // ユーザーの回答に基づいて性格を診断する関数
+      const personality = diagnosePersonality(answer1, answer2, answer3);
+
+      // 結果を表示
+      document.getElementById("result").innerText = "あなたの性格診断結果: " + personality;
+    }
+
+    function diagnosePersonality(answer1, answer2, answer3) {
+      if (answer1 === "泣きたくなる") {
+        if (answer2 === "Yes") {
+          if (answer3 === "Yes") {
+            return "優しい人ですね";
+          } else {
+            return "もう少し人に優しくしましょう";
+          }
+        } else {
+          return "もう少し人に優しくしましょう";
+        }
+      } else {
+        return "もう少し人に優しくしましょう";
+      }
+    }
+  </script>
+</body>
+</html>
